@@ -16,7 +16,7 @@
     <div class="col-lg-6">
       <table class="table table-sm table-hover ">
         <?php
-        foreach ($sql_profil_surat_ta as $key) {
+        foreach ($sql_surat_ta_nim as $key) {
           extract($key);
           $nim = $nim;
           $nama = $nama_mahasiswa;

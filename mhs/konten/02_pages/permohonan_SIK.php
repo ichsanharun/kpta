@@ -43,6 +43,12 @@
                </tr>
 
                <tr>
+                 <th>Judul Penelitian</th>
+                 <td width="5%">:</td>
+                 <td><input class="form-control" type="text" name="judul_kp" value="" required></td>
+               </tr>
+
+               <tr>
                    <th>Nama Instansi</th>
                    <td width="5%">:</td>
                    <td><input class="form-control" type="text" name="nama_instansi" value="" required></td>

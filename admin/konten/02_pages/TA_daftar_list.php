@@ -19,7 +19,7 @@
       </thead>
       </tbody>
       <?php
-      foreach ($sql_profil_ta as $key) {
+      foreach ($sql_jadwal_ta as $key) {
         extract($key);
         ?>
           <tr>

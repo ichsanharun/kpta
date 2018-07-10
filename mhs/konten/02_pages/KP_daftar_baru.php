@@ -13,11 +13,12 @@
         <input type="hidden" name="tipe" value="KP">
       <table class="table table-sm table-hover ">
         <?php
-        foreach ($sql_profil as $key) {
+        foreach ($sql_surat_kp_id as $key) {
           extract($key);
           $nim = $nim;
           $nama = $nama_mahasiswa;
           ?>
+              <input type="hidden" name="id_surat_kp" value="<?php echo $id_surat_kp; ?>">
                <tr>
                    <th>NIM</th>
                    <td width="5%">:</td>
@@ -45,19 +46,19 @@
                <tr>
                  <th>Judul Penelitian</th>
                  <td width="5%">:</td>
-                 <td><input class="form-control" type="text" name="judul_kp" value="" required></td>
+                 <td><input class="form-control" type="text" name="judul_kp" value="<?php echo $judul_kp; ?>" required></td>
                </tr>
 
                <tr>
                    <th>Nama Instansi</th>
                    <td width="5%">:</td>
-                   <td><input class="form-control" type="text" name="nama_instansi" value="" required></td>
+                   <td><input class="form-control" type="text" name="nama_instansi" value="<?php echo $nama_instansi; ?>" required></td>
                </tr>
 
                <tr>
                    <th>Alamat Instansi</th>
                    <td width="5%">:</td>
-                   <td><input class="form-control" type="text" name="alamat_instansi" value="" required></td>
+                   <td><input class="form-control" type="text" name="alamat_instansi" value="<?php echo $alamat_instansi; ?>" required></td>
                </tr>
 
                <tr>

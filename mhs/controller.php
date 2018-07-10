@@ -2,7 +2,7 @@
 $query_profil = "SELECT * FROM mahasiswa INNER JOIN jurusan ON `mahasiswa`.`kode_jurusan` = `jurusan`.`kode_jurusan` WHERE nim = '$_SESSION[id]' order by `mahasiswa`.`kode_jurusan` asc";
 $sql_profil = mysqli_query($mysqli,$query_profil);
 
-$query_daftar_kp = "SELECT * FROM surat_kp WHERE nim = '$_SESSION[id]' AND status = 'Disetujui'";
+$query_daftar_kp = "SELECT * FROM surat_kp INNER JOIN mahasiswa INNER JOIN jurusan ON `mahasiswa`.`nim` = `surat_kp`.`nim` AND `mahasiswa`.`kode_jurusan` = `jurusan`.`kode_jurusan` WHERE `surat_kp`.`nim` = '$_SESSION[id]' AND `surat_kp`.`status` = 'Disetujui'";
 $sql_daftar_kp = mysqli_query($mysqli,$query_daftar_kp);
 
 $query_daftar_ta = "SELECT * FROM mahasiswa INNER JOIN jurusan INNER JOIN surat_ta INNER JOIN jadwal_ta INNER JOIN dosen ON `mahasiswa`.`nim` = `surat_ta`.`nim` AND `mahasiswa`.`kode_jurusan` = `jurusan`.`kode_jurusan` AND `jadwal_ta`.`nim` = `mahasiswa`.`nim` AND `jadwal_ta`.`id_dosen` = `dosen`.`id_dosen` WHERE `surat_ta`.`nim` = '$_SESSION[id]' AND `surat_ta`.`status` = 'Disetujui'";
@@ -16,6 +16,11 @@ $sql_profil_ta = mysqli_query($mysqli,$query_profil_ta);
 
 $query_surat_kp = "SELECT * FROM surat_kp INNER JOIN mahasiswa INNER JOIN jurusan ON `surat_kp`.`nim` = `mahasiswa`.`nim` AND `mahasiswa`.`kode_jurusan` = `jurusan`.`kode_jurusan` WHERE `surat_kp`.`nim` = '$_SESSION[id]'";
 $sql_surat_kp = mysqli_query($mysqli,$query_surat_kp);
+
+if (!empty($_GET['skp'])) {
+  $query_surat_kp_id = "SELECT * FROM surat_kp INNER JOIN mahasiswa INNER JOIN jurusan ON `surat_kp`.`nim` = `mahasiswa`.`nim` AND `mahasiswa`.`kode_jurusan` = `jurusan`.`kode_jurusan` WHERE `surat_kp`.`nim` = '$_SESSION[id]' AND `surat_kp`.`id_surat_kp` = '$_GET[skp]' ";
+  $sql_surat_kp_id = mysqli_query($mysqli,$query_surat_kp_id);
+}
 
 $query_surat_ta = "SELECT * FROM surat_ta INNER JOIN mahasiswa INNER JOIN jurusan ON `mahasiswa`.`nim` = `surat_ta`.`nim` AND `mahasiswa`.`kode_jurusan` = `jurusan`.`kode_jurusan` WHERE `surat_ta`.`nim` = '$_SESSION[id]'";
 $sql_surat_ta = mysqli_query($mysqli,$query_surat_ta);

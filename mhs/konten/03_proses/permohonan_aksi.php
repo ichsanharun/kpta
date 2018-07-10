@@ -6,6 +6,7 @@ $alamat_instansi = $_POST['alamat_instansi'];
 $kebutuhan_instansi = $_POST['kebutuhan'];
 $tipe = $_POST['tipe'];
 if ($tipe == "SIK") {
+  $judul_kp = $_POST['judul_kp'];
   $query = "SELECT max(id_surat_kp) as maxKode FROM surat_kp";
   $hasil = $mysqli->query($query);
   $data  = mysqli_fetch_array($hasil);
@@ -19,7 +20,8 @@ if ($tipe == "SIK") {
     !empty($nim) AND
     !empty($nama_instansi) AND
     !empty($alamat_instansi) AND
-    !empty($kebutuhan_instansi)
+    !empty($kebutuhan_instansi) AND
+    !empty($judul_kp)
   ) {
         $queryupdate_surat = "INSERT INTO surat_kp
         (
@@ -34,7 +36,7 @@ if ($tipe == "SIK") {
         VALUES
         (
           '$id_surat',
-          '',
+          '$judul_kp',
           '$nim',
           '$nama_instansi',
           '$alamat_instansi',

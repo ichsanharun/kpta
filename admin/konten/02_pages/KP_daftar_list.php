@@ -11,28 +11,48 @@
     <table class="table table-bordered table-hovered">
       <thead class="thead-light">
         <tr>
-          <th>Judul Penelitian</th>
-          <th>Status</th>
+          <th>NIM</th>
+          <th>Nama</th>
           <th>Pembimbing</th>
-          <th>Nilai</th>
+          <th>Status</th>
+          <th>Opsi</th>
         </tr>
       </thead>
       </tbody>
       <?php
-      foreach ($sql_profil_kp as $key) {
+      foreach ($sql_jadwal_kp as $key) {
         extract($key);
         ?>
           <tr>
-            <td><?php echo $judul_kp; ?></td>
-            <td><?php echo $status; ?></td>
+            <td><?php echo $nim; ?></td>
+            <td><?php echo $nama_mahasiswa; ?></td>
             <td><?php echo $nama_dosen; ?></td>
-            <td><?php echo $hasil_sidang_kp; ?></td>
+            <td><?php echo $status; ?></td>
+            <td>
+              <a href="?p=jadwal_tools&ts=kp&nim=<?php echo $nim; ?>&act=detail" class="btn btn-info btn-sm">
+                <i class="fa fa-fw fa-arrow-circle-right"></i>Detail</a>
+              <?php
+                if (($status == 'Disetujui') OR ($status == 'Ditolak')) {
+                  ?>
+                  <a href="?p=jadwal_tools&ts=kp&nim=<?php echo $nim; ?>&act=ubah" class="btn btn-warning btn-sm">
+                    <i class="fa fa-fw fa-edit"></i>Ubah</a>
+                  <?php
+                }
+                else{
+                  ?>
+                  <a href="?p=jadwal_tools&ts=kp&nim=<?php echo $nim; ?>&act=v" class="btn btn-success btn-sm">
+                    <i class="fa fa-fw fa-check-circle"></i>Setujui</a>
+                  <a href="?p=jadwal_tools&ts=kp&nim=<?php echo $nim; ?>&act=x" class="btn btn-danger btn-sm">
+                    <i class="fa fa-fw fa-times-circle"></i>Tolak</a>
+                  <?php
+                }
+              ?>
+            </td>
           </tr>
 
         <?php
         }
         ?>
     </table>
-    <a href="?p=KP_daftar_baru" class="btn btn-info">Daftar Baru</a>
   </div>
 </div>

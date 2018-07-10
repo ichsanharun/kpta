@@ -18,7 +18,7 @@
         <input type="hidden" name="tipe" value="SIK">
       <table class="table table-sm table-hover ">
         <?php
-        foreach ($sql_profil_surat_kp as $key) {
+        foreach ($sql_surat_kp_nim as $key) {
           extract($key);
           $nim = $nim;
           $nama = $nama_mahasiswa;

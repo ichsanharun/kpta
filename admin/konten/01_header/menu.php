@@ -6,7 +6,7 @@
   <div class="collapse navbar-collapse" id="navbarResponsive">
     <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
       <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
-        <a class="nav-link" href="index.html">
+        <a class="nav-link" href="?">
           <i class="fa fa-fw fa-home"></i>
           <span class="nav-link-text">Home</span>
         </a>
@@ -20,31 +20,58 @@
       <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
         <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapsePermohonan" data-parent="#exampleAccordion">
           <i class="fa fa-fw fa-edit"></i>
-          <span class="nav-link-text">Permohonan</span>
+          <span class="nav-link-text">
+            Permohonan
+            <?php
+              if (($alert_skp > 0) OR ($alert_sta > 0)) {
+                ?>
+                <span class="indicator text-warning">
+                  <i class="fa fa-fw fa-circle"></i>
+                </span>
+                <?php
+              }
+            ?>
+          </span>
         </a>
         <ul class="sidenav-second-level collapse" id="collapsePermohonan">
           <li>
             <a href="?p=permohonan_SIK">
               <i class="fa fa-fw fa-file"></i>
-              Surat Izin Kerja</a>
+              Surat Izin Kerja
+              <span class="badge badge-pill badge-warning"><?php echo $alert_skp; ?> New</span></a>
+            </a>
           </li>
           <li>
             <a href="?p=permohonan_SIT">
               <i class="fa fa-fw fa-file"></i>
-              Surat Izin</a>
+              Surat Izin
+              <span class="badge badge-pill badge-warning"><?php echo $alert_sta; ?> New</span></a>
+            </a>
           </li>
         </ul>
       </li>
       <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
         <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseKP" data-parent="#exampleAccordion">
           <i class="fa fa-fw fa-edit"></i>
-          <span class="nav-link-text">Kerja Praktek</span>
+          <span class="nav-link-text">
+            Kerja Praktek
+            <?php
+              if ($alert_jkp > 0) {
+                ?>
+                <span class="indicator text-warning">
+                  <i class="fa fa-fw fa-circle"></i>
+                </span>
+                <?php
+              }
+            ?>
+          </span>
         </a>
         <ul class="sidenav-second-level collapse" id="collapseKP">
           <li>
             <a href="?p=KP_daftar_list">
               <i class="fa fa-fw fa-address-card"></i>
-              Daftar</a>
+              Daftar
+              <span class="badge badge-pill badge-warning"><?php echo $alert_jkp; ?> New</span></a>
           </li>
           <li>
             <a href="?p=KP_absen">
@@ -57,13 +84,26 @@
       <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
         <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseTA" data-parent="#exampleAccordion">
           <i class="fa fa-fw fa-edit"></i>
-          <span class="nav-link-text">Tugas Akhir</span>
+          <span class="nav-link-text">
+            Tugas Akhir
+            <?php
+              if ($alert_sta > 0) {
+                ?>
+                <span class="indicator text-warning d-none d-lg-block">
+                  <i class="fa fa-fw fa-circle"></i>
+                </span>
+                <?php
+              }
+            ?>
+          </span>
         </a>
         <ul class="sidenav-second-level collapse" id="collapseTA">
           <li>
             <a href="?p=TA_daftar_list">
               <i class="fa fa-fw fa-address-card"></i>
-              Daftar</a>
+              Daftar
+              <span class="badge badge-pill badge-warning"><?php echo $alert_jta; ?> New</span></a>
+            </a>
           </li>
           <li>
             <a href="?p=TA_absen">
@@ -93,7 +133,7 @@
       </li>
     </ul>
 
-    
+
     <ul class="navbar-nav sidenav-toggler">
       <li class="nav-item">
         <a class="nav-link text-center" id="sidenavToggler">
@@ -102,7 +142,7 @@
       </li>
     </ul>
     <ul class="navbar-nav ml-auto">
-      <li class="nav-item dropdown">
+      <!--li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle mr-lg-2" id="messagesDropdown" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           <i class="fa fa-fw fa-envelope"></i>
           <span class="d-lg-none">Messages
@@ -212,7 +252,7 @@
           <div class="dropdown-divider"></div>
           <a class="dropdown-item small" href="?p=permohonan_SIT">View all alerts</a>
         </div>
-      </li>
+      </li-->
 
 
       <li class="nav-item">

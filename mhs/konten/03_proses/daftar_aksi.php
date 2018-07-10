@@ -7,6 +7,7 @@ $id_dosen = $_POST['id_dosen'];
 $tipe = $_POST['tipe'];
 if ($tipe == "KP") {
   $judul_kp = $_POST['judul_kp'];
+  $id_surat_kp = $_POST['id_surat_kp'];
   $query = "SELECT max(id_jadwal_kp) as maxKode FROM jadwal_kp";
   $hasil = $mysqli->query($query);
   $data  = mysqli_fetch_array($hasil);
@@ -21,7 +22,8 @@ if ($tipe == "KP") {
     !empty($nama_instansi) AND
     !empty($alamat_instansi) AND
     !empty($id_dosen) AND
-    !empty($judul_kp)
+    !empty($judul_kp) AND
+    !empty($id_surat_kp)
   ) {
         $queryupdate_surat = "INSERT INTO jadwal_kp
         (
@@ -31,7 +33,8 @@ if ($tipe == "KP") {
           nama_instansi,
           alamat_instansi,
           id_dosen,
-          status
+          status,
+          id_surat_kp
         )
         VALUES
         (
@@ -41,7 +44,8 @@ if ($tipe == "KP") {
           '$nama_instansi',
           '$alamat_instansi',
           '$id_dosen',
-          'Menunggu'
+          'Menunggu',
+          '$id_surat_kp'
         )
         ";
         $sqlupdate_surat = $mysqli->query($queryupdate_surat);
@@ -63,6 +67,7 @@ if ($tipe == "KP") {
 }
 elseif ($tipe == "TA") {
   $judul_ta = $_POST['judul_ta'];
+  $id_surat_ta = $_POST['id_surat_ta'];
   $query = "SELECT max(id_jadwal_ta) as maxKode FROM jadwal_ta";
   $hasil = $mysqli->query($query);
   $data  = mysqli_fetch_array($hasil);
@@ -86,7 +91,8 @@ elseif ($tipe == "TA") {
           nama_instansi,
           id_dosen,
           alamat_instansi,
-          status
+          status,
+          id_surat_ta
         )
         VALUES
         (
@@ -96,7 +102,8 @@ elseif ($tipe == "TA") {
           '$nama_instansi',
           '$id_dosen',
           '$alamat_instansi',
-          'Menunggu'
+          'Menunggu',
+          '$id_surat_ta'
         )
         ";
         $sqlupdate_surat = $mysqli->query($queryupdate_surat);
