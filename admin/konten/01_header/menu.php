@@ -87,9 +87,9 @@
           <span class="nav-link-text">
             Tugas Akhir
             <?php
-              if ($alert_sta > 0) {
+              if ($alert_jta > 0) {
                 ?>
-                <span class="indicator text-warning d-none d-lg-block">
+                <span class="indicator text-warning">
                   <i class="fa fa-fw fa-circle"></i>
                 </span>
                 <?php

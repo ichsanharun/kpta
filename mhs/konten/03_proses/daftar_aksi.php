@@ -25,7 +25,7 @@ if ($tipe == "KP") {
     !empty($judul_kp) AND
     !empty($id_surat_kp)
   ) {
-        $queryupdate_surat = "INSERT INTO jadwal_kp
+        $queryupdate_jadwal = "INSERT INTO jadwal_kp
         (
           id_jadwal_kp,
           judul_kp,
@@ -48,6 +48,10 @@ if ($tipe == "KP") {
           '$id_surat_kp'
         )
         ";
+        $queryupdate_surat = "UPDATE surat_kp SET
+          notif = 'Terbuka' WHERE id_surat_kp = '$id_surat_kp'
+        ";
+        $sqlupdate_jadwal = $mysqli->query($queryupdate_jadwal);
         $sqlupdate_surat = $mysqli->query($queryupdate_surat);
         ?>
           <script>
@@ -83,7 +87,7 @@ elseif ($tipe == "TA") {
     !empty($alamat_instansi) AND
     !empty($judul_ta)
   ) {
-        $queryupdate_surat = "INSERT INTO jadwal_ta
+        $queryupdate_jadwal = "INSERT INTO jadwal_ta
         (
           id_jadwal_ta,
           judul_ta,
@@ -106,6 +110,10 @@ elseif ($tipe == "TA") {
           '$id_surat_ta'
         )
         ";
+        $queryupdate_surat = "UPDATE surat_ta SET
+          notif = 'Terbuka' WHERE id_surat_ta = '$id_surat_ta'
+        ";
+        $sqlupdate_jadwal = $mysqli->query($queryupdate_jadwal);
         $sqlupdate_surat = $mysqli->query($queryupdate_surat);
         ?>
           <script>

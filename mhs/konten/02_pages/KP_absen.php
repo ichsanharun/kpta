@@ -3,7 +3,10 @@
   <li class="breadcrumb-item">
     <a href="?p=">Dashboard</a>
   </li>
-  <li class="breadcrumb-item active">Kerja Praktek</li>
+  <li class="breadcrumb-item">
+    <a href="?p=KP_daftar_list">Kerja Praktek</a>
+  </li>
+  <li class="breadcrumb-item active">Absen Bimbingan</li>
 </ol>
 <!-- Area Dashboard-->
 <div class="row">

@@ -11,7 +11,7 @@
 <!-- Area Dashboard-->
 <div class="col-lg-8">
   <div class="row">
-    <form class="form-control" action="?a=profil_ubah_aksi" method="post">
+    <form class="form-control" action="?a=profil_ubah_aksi" method="post" enctype="multipart/form-data">
         <?php
         foreach ($sql_profil as $key) {
           extract($key);
@@ -85,6 +85,12 @@
             <label for="staticEmail" class="col-sm-3 col-form-label">Konfirmasi Password</label>
             <div class="col-sm-8">
               <input class="form-control" type="password" name="konfirmasi_password" value="" required>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="staticEmail" class="col-sm-3 col-form-label">Upload Foto</label>
+            <div class="col-sm-8">
+              <input class="form-control" type="file" name="foto_mahasiswa">
             </div>
           </div>
 

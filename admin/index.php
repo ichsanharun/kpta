@@ -87,6 +87,7 @@
     <!-- Custom scripts for this page-->
     <script src="assets/js/sb-admin-datatables.min.js"></script>
     <script src="assets/js/sb-admin-charts.min.js"></script>
+    <script src="../assets/js/custom.js"></script>
   </div>
 </body>
 

@@ -16,6 +16,7 @@
           extract($key);
           $nim = $nim;
           $nama = $nama_mahasiswa;
+          $foto = $foto_mahasiswa;
           ?>
                <tr>
                    <th>NIM</th>
@@ -84,7 +85,7 @@
     </div>
 
     <div class="col-lg-6 text-center">
-      <img src="img/ss.jpg" alt="profil" height="200"><br>
+      <img src="img/<?php echo $foto; ?>" alt="profil" height="200"><br>
       <hr>
       <h5><?php echo $nim; ?></h5>
       <h5><?php echo $nama; ?></h5>

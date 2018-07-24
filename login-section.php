@@ -29,7 +29,7 @@ $password = $_POST['passcode'];
                 $_SESSION['hak'] = "dosen";
                 $_SESSION['id'] = $rowdosen['id_dosen'];
                 $_SESSION['nama']= $rowdosen['nama_dosen'];
-                header('location:dosen/index.php');
+                header('location:dsn/index.php');
               }
 
           elseif ($rowdosen['id_dosen'] != $id AND $rowdosen['password_dosen'] != $password)

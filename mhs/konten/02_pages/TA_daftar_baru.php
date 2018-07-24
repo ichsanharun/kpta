@@ -3,7 +3,7 @@
   <li class="breadcrumb-item">
     <a href="?p=">Dashboard</a>
   </li>
-  <li class="breadcrumb-item active">Daftar Baru Tugas Akhir</li>
+  <li class="breadcrumb-item active">Daftar Baru Kerja Praktek</li>
 </ol>
 <!-- Area Dashboard-->
 <div class="jumbotron" style="padding:10px">
@@ -13,11 +13,12 @@
         <input type="hidden" name="tipe" value="TA">
       <table class="table table-sm table-hover ">
         <?php
-        foreach ($sql_profil as $key) {
+        foreach ($sql_surat_ta_id as $key) {
           extract($key);
           $nim = $nim;
           $nama = $nama_mahasiswa;
           ?>
+              <input type="hidden" name="id_surat_ta" value="<?php echo $id_surat_ta; ?>">
                <tr>
                    <th>NIM</th>
                    <td width="5%">:</td>
@@ -45,29 +46,35 @@
                <tr>
                  <th>Judul Penelitian</th>
                  <td width="5%">:</td>
-                 <td><input class="form-control" type="text" name="judul_ta" value="" required></td>
+                 <td><input class="form-control" type="text" name="judul_ta" value="<?php echo $judul_ta; ?>" required></td>
                </tr>
 
                <tr>
                    <th>Nama Instansi</th>
                    <td width="5%">:</td>
-                   <td><input class="form-control" type="text" name="nama_instansi" value="" required></td>
+                   <td><input class="form-control" type="text" name="nama_instansi" value="<?php echo $nama_instansi; ?>" required></td>
                </tr>
 
                <tr>
                    <th>Alamat Instansi</th>
                    <td width="5%">:</td>
-                   <td><input class="form-control" type="text" name="alamat_instansi" value="" required></td>
+                   <td><input class="form-control" type="text" name="alamat_instansi" value="<?php echo $alamat_instansi; ?>" required></td>
                </tr>
 
                <tr>
                    <th>Pembimbing Usulan</th>
                    <td width="5%">:</td>
                    <td>
-                     <input type="text" class="form-control" name="id_dosen" required>
-                     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#daftarDosen">
-                       Lihat Daftar
-                     </button>
+                      <div class="row">
+                        <div class="col-lg-6">
+                         <input type="text" class="form-control" name="id_dosen" id="id_dosen" required readonly>
+                        </div>
+                        <div class="col-lg-6">
+                         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#daftarDosen">
+                           Lihat Daftar
+                         </button>
+                        </div>
+                      </div>
                    </td>
                </tr>
 
@@ -98,6 +105,7 @@
             <tr>
               <th>ID Dosen</th>
               <th>Nama Dosen</th>
+              <th>Klik u/ Pilih</th>
             </tr>
           </thead>
           </tbody>
@@ -106,6 +114,7 @@
               <tr>
                 <td><?php echo $id_dosen; ?></td>
                 <td><?php echo $nama_dosen; ?></td>
+                <td><a href="#" onclick="tampilkan_iddosen('<?php echo $id_dosen; ?>')" class="btn btn-info btn-sm">Pilih</a></td>
               </tr>
             <?php } ?>
         </table>

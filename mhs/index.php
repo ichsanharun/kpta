@@ -1,7 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <?php
-  session_start(); ?>
+  session_start();
+    include '../koneksi/koneksi.php';
+    include 'controller.php';
+    ?>
 <head>
   <?php include 'konten/01_header/head.php'; ?>
 </head>
@@ -16,8 +19,6 @@
     <div class="container-fluid">
       <!-- KONTEN-->
       <?php
-        include '../koneksi/koneksi.php';
-        include 'controller.php';
         if (!empty($_GET['p'])) {
           $p = $_GET['p'];
           if (file_exists("konten/02_pages/$p.php")) {
@@ -86,6 +87,7 @@
     <!-- Custom scripts for this page-->
     <script src="assets/js/sb-admin-datatables.min.js"></script>
     <script src="assets/js/sb-admin-charts.min.js"></script>
+    <script src="../assets/js/custom.js"></script>
   </div>
 </body>
 

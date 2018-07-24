@@ -65,10 +65,16 @@
                    <th>Pembimbing Usulan</th>
                    <td width="5%">:</td>
                    <td>
-                     <input type="text" class="form-control" name="id_dosen" required>
-                     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#daftarDosen">
-                       Lihat Daftar
-                     </button>
+                      <div class="row">
+                        <div class="col-lg-6">
+                         <input type="text" class="form-control" name="id_dosen" id="id_dosen" required readonly>
+                        </div>
+                        <div class="col-lg-6">
+                         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#daftarDosen">
+                           Lihat Daftar
+                         </button>
+                        </div>
+                      </div>
                    </td>
                </tr>
 
@@ -99,6 +105,7 @@
             <tr>
               <th>ID Dosen</th>
               <th>Nama Dosen</th>
+              <th>Klik u/ Pilih</th>
             </tr>
           </thead>
           </tbody>
@@ -107,6 +114,7 @@
               <tr>
                 <td><?php echo $id_dosen; ?></td>
                 <td><?php echo $nama_dosen; ?></td>
+                <td><a href="#" onclick="tampilkan_iddosen('<?php echo $id_dosen; ?>')" class="btn btn-info btn-sm">Pilih</a></td>
               </tr>
             <?php } ?>
         </table>
