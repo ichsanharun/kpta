@@ -18,12 +18,12 @@
         </a>
       </li>
       <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
-        <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapsePermohonan" data-parent="#exampleAccordion">
+        <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseKP" data-parent="#exampleAccordion">
           <i class="fa fa-fw fa-edit"></i>
           <span class="nav-link-text">
-            Permohonan
+            Kerja Praktek
             <?php
-              if (($alert_skp > 0) OR ($alert_sta > 0)) {
+              if ($alert_akp > 0) {
                 ?>
                 <span class="indicator text-warning">
                   <i class="fa fa-fw fa-circle"></i>
@@ -32,26 +32,6 @@
               }
             ?>
           </span>
-        </a>
-        <ul class="sidenav-second-level collapse" id="collapsePermohonan">
-          <li>
-            <a href="?p=permohonan_SIK">
-              <i class="fa fa-fw fa-file"></i>
-              Surat Izin Kerja
-              <span class="badge badge-pill badge-warning"><?php echo $alert_skp; ?> New</span></a>
-          </li>
-          <li>
-            <a href="?p=permohonan_SIT">
-              <i class="fa fa-fw fa-file"></i>
-              Surat Izin
-              <span class="badge badge-pill badge-warning"><?php echo $alert_sta; ?> New</span></a>
-          </li>
-        </ul>
-      </li>
-      <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
-        <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseKP" data-parent="#exampleAccordion">
-          <i class="fa fa-fw fa-edit"></i>
-          <span class="nav-link-text">Kerja Praktek</span>
         </a>
         <ul class="sidenav-second-level collapse" id="collapseKP">
           <li>
@@ -62,7 +42,8 @@
           <li>
             <a href="?p=KP_absen">
               <i class="fa fa-fw fa-calendar"></i>
-              Absen Bimbingan</a>
+              Absen Bimbingan
+              <span class="badge badge-pill badge-warning"><?php echo $alert_akp; ?> New</span></a>
           </li>
         </ul>
       </li>
@@ -70,7 +51,18 @@
       <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
         <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseTA" data-parent="#exampleAccordion">
           <i class="fa fa-fw fa-edit"></i>
-          <span class="nav-link-text">Tugas Akhir</span>
+          <span class="nav-link-text">
+            Tugas Akhir
+            <?php
+              if ($alert_ata > 0) {
+                ?>
+                <span class="indicator text-warning">
+                  <i class="fa fa-fw fa-circle"></i>
+                </span>
+                <?php
+              }
+            ?>
+          </span>
         </a>
         <ul class="sidenav-second-level collapse" id="collapseTA">
           <li>
@@ -81,7 +73,8 @@
           <li>
             <a href="?p=TA_absen">
               <i class="fa fa-fw fa-calendar"></i>
-              Absen Bimbingan</a>
+              Absen Bimbingan
+              <span class="badge badge-pill badge-warning"><?php echo $alert_ata; ?> New</span></a>
           </li>
         </ul>
       </li>

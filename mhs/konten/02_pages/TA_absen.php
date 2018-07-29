@@ -3,7 +3,10 @@
   <li class="breadcrumb-item">
     <a href="?p=">Dashboard</a>
   </li>
-  <li class="breadcrumb-item active">Permohonan Surat Izin Kerja</li>
+  <li class="breadcrumb-item">
+    <a href="?p=TA_daftar_list">Tugas Akhir</a>
+  </li>
+  <li class="breadcrumb-item active">Absen Bimbingan</li>
 </ol>
 <!-- Area Dashboard-->
 <div class="row">
@@ -33,7 +36,7 @@
             <td><?php echo $id_dosen; ?></td>
             <td><?php echo $status; ?></td>
             <td>
-              <a href="?p=TA_absen_lihat&id_ta=<?php echo $id_jadwal_ta; ?>" class="btn btn-info">Lihat</a>
+              <a href="?p=TA_absen_lihat&id=<?php echo $id_jadwal_ta; ?>" class="btn btn-info">Lihat</a>
             </td>
           </tr>
 

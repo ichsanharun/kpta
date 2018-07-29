@@ -29,16 +29,16 @@
             <td><?php echo $nama_dosen; ?></td>
             <td><?php echo $status; ?></td>
             <td>
-              <a href="?p=jadwal_tools&ts=ta&nim=<?php echo $nim; ?>&act=detail" class="btn btn-info btn-sm">
+              <a href="?p=jadwal_tools&ts=ta&id_kpta=<?php echo $id_jadwal_ta; ?>&act=detail" class="btn btn-info btn-sm">
                 <i class="fa fa-fw fa-arrow-circle-right"></i>Detail</a>
               <?php
                 if (($status == 'Disetujui') OR ($status == 'Ditolak')) {
                 }
                 else{
                   ?>
-                  <a href="?p=jadwal_tools&ts=ta&nim=<?php echo $nim; ?>&act=v" class="btn btn-success btn-sm">
+                  <a href="?p=jadwal_tools&ts=ta&id_kpta=<?php echo $id_jadwal_ta; ?>&act=v" class="btn btn-success btn-sm">
                     <i class="fa fa-fw fa-check-circle"></i>Setujui</a>
-                  <a href="?p=jadwal_tools&ts=ta&nim=<?php echo $nim; ?>&act=x" class="btn btn-danger btn-sm">
+                  <a href="?p=jadwal_tools&ts=ta&id_kpta=<?php echo $id_jadwal_ta; ?>&act=x" class="btn btn-danger btn-sm">
                     <i class="fa fa-fw fa-times-circle"></i>Tolak</a>
                   <?php
                 }

@@ -3,11 +3,10 @@
 $nim = $_POST['nim'];
 $nama_instansi = $_POST['nama_instansi'];
 $alamat_instansi = $_POST['alamat_instansi'];
-$id_dosen = $_POST['id_dosen'];
+//$id_dosen = $_POST['id_dosen'];
 $tipe = $_POST['tipe'];
 if ($tipe == "KP") {
   $judul_kp = $_POST['judul_kp'];
-  $id_surat_kp = $_POST['id_surat_kp'];
   $query = "SELECT max(id_jadwal_kp) as maxKode FROM jadwal_kp";
   $hasil = $mysqli->query($query);
   $data  = mysqli_fetch_array($hasil);
@@ -15,15 +14,14 @@ if ($tipe == "KP") {
   $noUrut = (int) substr($kodeTrans, 8, 4);
   $noUrut++;
   $char = "KP".date("Ym");
-  $id_surat = $char . sprintf("%04s", $noUrut);
+  $id = $char . sprintf("%04s", $noUrut);
 
   if (
     !empty($nim) AND
     !empty($nama_instansi) AND
-    !empty($alamat_instansi) AND
-    !empty($id_dosen) AND
-    !empty($judul_kp) AND
-    !empty($id_surat_kp)
+    !empty($alamat_instansi)/* AND
+    !empty($id_dosen) */AND
+    !empty($judul_kp)
   ) {
         $queryupdate_jadwal = "INSERT INTO jadwal_kp
         (
@@ -32,27 +30,21 @@ if ($tipe == "KP") {
           nim,
           nama_instansi,
           alamat_instansi,
-          id_dosen,
-          status,
-          id_surat_kp
+          
+          status
         )
         VALUES
         (
-          '$id_surat',
+          '$id',
           '$judul_kp',
           '$nim',
           '$nama_instansi',
           '$alamat_instansi',
-          '$id_dosen',
-          'Menunggu',
-          '$id_surat_kp'
+          
+          'Menunggu'
         )
         ";
-        $queryupdate_surat = "UPDATE surat_kp SET
-          notif = 'Terbuka' WHERE id_surat_kp = '$id_surat_kp'
-        ";
         $sqlupdate_jadwal = $mysqli->query($queryupdate_jadwal);
-        $sqlupdate_surat = $mysqli->query($queryupdate_surat);
         ?>
           <script>
             alert('Data Berhasil Disimpan!');
@@ -71,7 +63,6 @@ if ($tipe == "KP") {
 }
 elseif ($tipe == "TA") {
   $judul_ta = $_POST['judul_ta'];
-  $id_surat_ta = $_POST['id_surat_ta'];
   $query = "SELECT max(id_jadwal_ta) as maxKode FROM jadwal_ta";
   $hasil = $mysqli->query($query);
   $data  = mysqli_fetch_array($hasil);
@@ -79,7 +70,7 @@ elseif ($tipe == "TA") {
   $noUrut = (int) substr($kodeTrans, 8, 4);
   $noUrut++;
   $char = "TA".date("Ym");
-  $id_surat = $char . sprintf("%04s", $noUrut);
+  $id = $char . sprintf("%04s", $noUrut);
 
   if (
     !empty($nim) AND
@@ -93,28 +84,22 @@ elseif ($tipe == "TA") {
           judul_ta,
           nim,
           nama_instansi,
-          id_dosen,
+          
           alamat_instansi,
-          status,
-          id_surat_ta
+          status
         )
         VALUES
         (
-          '$id_surat',
+          '$id',
           '$judul_ta',
           '$nim',
           '$nama_instansi',
-          '$id_dosen',
+          
           '$alamat_instansi',
-          'Menunggu',
-          '$id_surat_ta'
+          'Menunggu'
         )
         ";
-        $queryupdate_surat = "UPDATE surat_ta SET
-          notif = 'Terbuka' WHERE id_surat_ta = '$id_surat_ta'
-        ";
         $sqlupdate_jadwal = $mysqli->query($queryupdate_jadwal);
-        $sqlupdate_surat = $mysqli->query($queryupdate_surat);
         ?>
           <script>
             alert('Data Berhasil Disimpan!');

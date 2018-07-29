@@ -4,10 +4,10 @@
     <a href="?p=">Dashboard</a>
   </li>
   <li class="breadcrumb-item active">
-    <a href="?p=permohonan_SIK">Permohonan Surat Izin TA</a>
+    <a href="?p=permohonan_SIK">Permohonan Surat Izin Kerja</a>
   </li>
   <li class="breadcrumb-item active">
-    Detail Permohonan Surat Izin TA
+    Detail Permohonan Surat Izin Kerja
   </li>
 </ol>
 <!-- Area Dashboard-->
@@ -22,7 +22,7 @@
         <?php
         foreach ($sql_profil_jadwal_ta as $key) {
           extract($key);
-          $nim = $nim;
+          $id = $id_jadwal_ta;
           $nama = $nama_mahasiswa;
           $foto = $foto_mahasiswa;
           $status = $status;
@@ -30,7 +30,7 @@
                <tr>
                    <th width="40%">NIM</th>
                    <td>:</td>
-                   <td><input type="hidden" name="nim" value="<?php echo $nim; ?>" required><?php echo $nim; ?></td>
+                   <td><input type="hidden" name="id_kpta" value="<?php echo $id_jadwal_ta; ?>" required><?php echo $nim; ?></td>
                </tr>
 
                <tr>
@@ -83,7 +83,7 @@
       </table>
         <a href="?p=TA_daftar_list" class="btn btn-secondary btn-sm">
           <i class="fa fa-fw fa-arrow-circle-left"></i>Kembali</a>
-        <a href="?p=jadwal_tools&ts=ta&nim=<?php echo $nim; ?>&act=x" class="btn btn-danger btn-sm">
+        <a href="?p=jadwal_tools&ts=ta&id_kpta=<?php echo $id; ?>&act=x" class="btn btn-danger btn-sm">
           <i class="fa fa-fw fa-times-circle"></i>Tolak</a>
         <button type="submit" class="btn btn-success btn-sm">
           <i class="fa fa-fw fa-check-circle"></i>Setujui</a>
@@ -109,7 +109,7 @@
       </thead>
       </tbody>
       <?php
-      foreach ($sql_absen_ta_nim as $key) {
+      foreach ($sql_absen_ta_id as $key) {
         extract($key);
         ?>
           <tr>

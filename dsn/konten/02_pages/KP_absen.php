@@ -37,7 +37,6 @@
             <td><?php echo $pembahasan_bimbingan; ?></td>
             <td><?php echo $status; ?></td>
             <td>
-              <a href="?p=KP_absen_lihat&id=<?php echo $id_absen_kp; ?>" class="btn btn-info">Atur Jadwal</a>
               <a href="?p=KP_absen_kehadiran&id=<?php echo $id_absen_kp; ?>" class="btn btn-info">Kehadiran</a>
             </td>
           </tr>
@@ -67,7 +66,8 @@
                   <div class="input-group-prepend">
                     <label class="input-group-text" for="inputGroupSelect01">Tanggal Bimbingan</label>
                   </div>
-                  <input class="form-control is-warning" id="tanggal_bimbingan" name="tanggal_bimbingan" type="date" required autofocus>
+                  <input class="form-control is-warning" data-toggle="popover" id="tanggal_bimbingan" name="tanggal_bimbingan" type="date" onchange="cek_tanggal(this)" required autofocus>
+                  <input class="form-control is-warning" id="tanggal_sekarang" name="tanggal_sekarang" type="hidden" value="<?php echo date("Y-m-d"); ?>">
                 </div>
               </div>
               <div class="input-group">

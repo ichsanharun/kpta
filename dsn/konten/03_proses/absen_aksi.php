@@ -12,7 +12,7 @@ if ($tipe_absen == "absen_kp") {
   $hasil = $mysqli->query($query);
   $data  = mysqli_fetch_array($hasil);
   $kodeTrans = $data['maxKode'];
-  $noUrut = (int) substr($kodeTrans, 8, 4);
+  $noUrut = (int) substr($kodeTrans, 11, 4);
   $noUrut++;
   $char = "ABS".date("Ymd");
   $id_absen = $char . sprintf("%04s", $noUrut);
@@ -64,11 +64,14 @@ elseif ($tipe_absen == "absen_ta") {
   $hasil = $mysqli->query($query);
   $data  = mysqli_fetch_array($hasil);
   $kodeTrans = $data['maxKode'];
-  $noUrut = (int) substr($kodeTrans, 8, 4);
+  $noUrut = (double) substr($kodeTrans, 4, 4);
   $noUrut++;
   $char = "ABS".date("Ymd");
   $id_absen = $char . sprintf("%04s", $noUrut);
-
+  echo $id_absen."<br>";
+  echo $noUrut."<br>";
+  echo $kodeTrans."<br>";
+/*
   if (
     !empty($tanggal_bimbingan) AND
     !empty($tempat_bimbingan) AND
@@ -109,7 +112,7 @@ elseif ($tipe_absen == "absen_ta") {
           window.location.href="?p=TA_absen";
         </script>
       <?php
-    }
+    }*/
 }
   else {
     ?>

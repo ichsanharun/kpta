@@ -25,7 +25,7 @@
       </thead>
       </tbody>
       <?php
-      foreach ($sql_profil_kp as $key) {
+      foreach ($sql_kp_list as $key) {
         extract($key);
         ?>
           <tr>
@@ -36,7 +36,7 @@
             <td><?php echo $id_dosen; ?></td>
             <td><?php echo $status; ?></td>
             <td>
-              <a href="?p=KP_absen_lihat&id_kp=<?php echo $id_jadwal_kp; ?>" class="btn btn-info">Lihat</a>
+              <a href="?p=KP_absen_lihat&id=<?php echo $id_jadwal_kp; ?>" class="btn btn-info">Lihat</a>
             </td>
           </tr>
 

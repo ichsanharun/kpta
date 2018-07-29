@@ -88,13 +88,14 @@
       if (!empty($_POST['id_jadwal_kp']) AND !empty($_POST['catatan_pembimbing']) AND !empty($_POST['kehadiran'])) {
         $id_jadwal_kp = $_POST['id_jadwal_kp'];
         foreach ($id_jadwal_kp as $key => $value) {
+          $id_absen_kp = $_POST['id_absen_kp'][$key];
           $id_jadwal_kp = $_POST['id_jadwal_kp'][$key];
           $catatan_pembimbing = $_POST['catatan_pembimbing'][$key];
           $kehadiran = $_POST['kehadiran'][$key];
 
           $query_update_absen = "UPDATE absen_kp_detail SET
             catatan_pembimbing = '$catatan_pembimbing',
-            status = '$kehadiran' WHERE id_jadwal_kp = '$value'
+            status = '$kehadiran' WHERE id_jadwal_kp = '$value' AND id_absen_kp = '$id_absen_kp'
           ";
           $sql_update_absen = $mysqli->query($query_update_absen);
           //echo "$key";

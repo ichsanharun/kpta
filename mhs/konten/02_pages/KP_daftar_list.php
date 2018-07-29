@@ -20,45 +20,22 @@
       </thead>
       </tbody>
       <?php
-      if (mysqli_num_rows($sql_profil_kp) > 0) {
-        foreach ($sql_profil_kp as $key) {
-          extract($key);
-          ?>
-            <tr>
-              <td><?php echo $judul_kp; ?></td>
-              <td><?php echo $status; ?></td>
-              <td><?php echo $nama_dosen; ?></td>
-              <td><?php echo $hasil_sidang_kp; ?></td>
-            </tr>
-          <?php
-        }
-      }else {
-        foreach ($sql_daftar_kp as $key) {
-          extract($key);
-          ?>
-            <tr>
-              <td><?php echo $judul_kp; ?></td>
-              <td><?php echo $status; ?></td>
-              <td>-</td>
-              <td>-</td>
-              <td><a href="?p=KP_daftar_baru&skp=<?php echo $id_surat_kp; ?>" class="btn btn-info">Daftar Baru</a></td>
-            </tr>
-          <?php
-        }
+      foreach ($sql_kp_list as $key) {
+        extract($key);
+        ?>
+        <tr>
+          <td><?php echo $judul_kp; ?></td>
+          <td><?php echo $status; ?></td>
+          <td><?php echo $nama_dosen; ?></td>
+          <td><?php echo $hasil_sidang_kp; ?></td>
+        </tr>
+        <?php
       }
-          ?>
+      ?>
 
     </table>
-    <?php
-    if (mysqli_num_rows($sql_daftar_kp) > 0) {
-
-    }else {
-      ?>
-        <script>
-          alert('Belum ada permohonan yang diterima!');
-        </script>
-      <?php
-    }
-    ?>
+    <?php if (mysqli_num_rows($sql_kp_list) == 0) { ?>
+      <a href="?p=KP_daftar_baru" class="btn btn-info">Daftar Baru</a>
+    <?php }else{} ?>
   </div>
 </div>

@@ -17,39 +17,7 @@
           <span class="nav-link-text">Profil</span>
         </a>
       </li>
-      <!--li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
-        <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapsePermohonan" data-parent="#exampleAccordion">
-          <i class="fa fa-fw fa-edit"></i>
-          <span class="nav-link-text">
-            Permohonan
-            <?php
-              if (($alert_skp > 0) OR ($alert_sta > 0)) {
-                ?>
-                <span class="indicator text-warning">
-                  <i class="fa fa-fw fa-circle"></i>
-                </span>
-                <?php
-              }
-            ?>
-          </span>
-        </a>
-        <ul class="sidenav-second-level collapse" id="collapsePermohonan">
-          <li>
-            <a href="?p=permohonan_SIK">
-              <i class="fa fa-fw fa-file"></i>
-              Surat Izin Kerja
-              <span class="badge badge-pill badge-warning"><?php echo $alert_skp; ?> New</span></a>
-            </a>
-          </li>
-          <li>
-            <a href="?p=permohonan_SIT">
-              <i class="fa fa-fw fa-file"></i>
-              Surat Izin
-              <span class="badge badge-pill badge-warning"><?php echo $alert_sta; ?> New</span></a>
-            </a>
-          </li>
-        </ul>
-      </li-->
+      
       <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
         <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseKP" data-parent="#exampleAccordion">
           <i class="fa fa-fw fa-edit"></i>

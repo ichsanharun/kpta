@@ -12,7 +12,7 @@ if ($tipe_absen == "absen_kp") {
   $hasil = $mysqli->query($query);
   $data  = mysqli_fetch_array($hasil);
   $kodeTrans = $data['maxKode'];
-  $noUrut = (int) substr($kodeTrans, 8, 4);
+  $noUrut = (int) substr($kodeTrans, 11, 4);
   $noUrut++;
   $char = "ABS".date("Ymd");
   $id_absen = $char . sprintf("%04s", $noUrut);
@@ -64,7 +64,7 @@ elseif ($tipe_absen == "absen_ta") {
   $hasil = $mysqli->query($query);
   $data  = mysqli_fetch_array($hasil);
   $kodeTrans = $data['maxKode'];
-  $noUrut = (int) substr($kodeTrans, 8, 4);
+  $noUrut = (int) substr($kodeTrans, 11, 4);
   $noUrut++;
   $char = "ABS".date("Ymd");
   $id_absen = $char . sprintf("%04s", $noUrut);

@@ -4,9 +4,9 @@
     <a href="?p=">Dashboard</a>
   </li>
   <li class="breadcrumb-item">
-    <a href="?p=TA_absen">Kerja Praktek</a>
+    <a href="?p=TA_absen">Tugas Akhir</a>
   </li>
-  <li class="breadcrumb-item active">Absen Bimbingan Kerja Praktek</li>
+  <li class="breadcrumb-item active">Absen Bimbingan Tugas Akhir</li>
 </ol>
 <!-- Area Dashboard-->
 
@@ -75,6 +75,7 @@
         ?>
           <tr>
             <input type="hidden" name="id_jadwal_ta[<?php echo $no; ?>]" value="<?php echo $id_jadwal_ta; ?>">
+            <input type="hidden" name="id_absen_ta[<?php echo $no; ?>]" value="<?php echo $id_absen_ta; ?>">
             <td><?php echo $id_jadwal_ta; ?></td>
             <td><?php echo $nama_mahasiswa; ?></td>
             <td><?php echo $judul_ta; ?></td>
@@ -82,9 +83,9 @@
             <td><textarea name="catatan_pembimbing[<?php echo $no; ?>]" class="form-control"><?php echo $catatan_pembimbing; ?></textarea></td>
             <td class="">
               <div class="form-check form-check-inline">
-                <input type="radio" name="kehadiran[<?php echo $no; ?>]" class="form-control" value="Hadir" <?php if($ab_status == "Hadir"){echo "checked ".$disable;} ?>>
+                <input type="radio" name="kehadiran[<?php echo $no; ?>]" class="form-control" value="Hadir" <?php if($ab_status == "Hadir" OR $ab_status == "Akan Hadir"){echo "checked ";} echo $disable; ?>>
                 <label class="form-check-label" for="inlineRadio1">Hadir</label>
-                <input type="radio" name="kehadiran[<?php echo $no; ?>]" class="form-control" value="Tidak Hadir" <?php if($ab_status == "Tidak Hadir"){echo "checked ".$disable;} ?>>
+                <input type="radio" name="kehadiran[<?php echo $no; ?>]" class="form-control" value="Tidak Hadir" <?php if($ab_status == "Tidak Hadir" OR $ab_status == "Tidak Akan Hadir"){echo "checked ";} echo $disable; ?>>
                 <label class="form-check-label" for="inlineRadio2">Tidak Hadir</label>
               </div>
             </td>
