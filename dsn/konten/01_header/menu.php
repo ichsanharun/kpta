@@ -17,7 +17,7 @@
           <span class="nav-link-text">Profil</span>
         </a>
       </li>
-      
+
       <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
         <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseKP" data-parent="#exampleAccordion">
           <i class="fa fa-fw fa-edit"></i>
@@ -84,18 +84,33 @@
       <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
         <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseSidang" data-parent="#exampleAccordion">
           <i class="fa fa-fw fa-edit"></i>
-          <span class="nav-link-text">Daftar Sidang</span>
+          <span class="nav-link-text">
+            List Menguji Sidang
+            <?php
+              if ($alert_nguji_kp > 0 OR $alert_nguji_ta > 0) {
+                ?>
+                <span class="indicator text-warning">
+                  <i class="fa fa-fw fa-circle"></i>
+                </span>
+                <?php
+              }
+            ?>
+          </span>
         </a>
         <ul class="sidenav-second-level collapse" id="collapseSidang">
           <li>
-            <a href="navbar.html">
+            <a href="?p=KP_sidang">
               <i class="fa fa-fw fa-clipboard"></i>
-              Sidang KP</a>
+              Sidang KP
+              <span class="badge badge-pill badge-warning"><?php echo $alert_nguji_kp; ?> New</span></a>
+            </a>
           </li>
           <li>
-            <a href="cards.html">
+            <a href="?p=TA_sidang">
               <i class="fa fa-fw fa-clipboard"></i>
-              Sidang TA</a>
+              Sidang TA
+              <span class="badge badge-pill badge-warning"><?php echo $alert_nguji_ta; ?> New</span></a>
+            </a>
           </li>
         </ul>
       </li>

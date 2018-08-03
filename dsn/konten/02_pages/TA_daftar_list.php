@@ -3,7 +3,7 @@
   <li class="breadcrumb-item">
     <a href="?p=">Dashboard</a>
   </li>
-  <li class="breadcrumb-item active">List Kerja Praktek</li>
+  <li class="breadcrumb-item active">List Tugas Akhir</li>
 </ol>
 <!-- Area Dashboard-->
 <div class="row">

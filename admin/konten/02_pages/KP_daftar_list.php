@@ -8,7 +8,7 @@
 <!-- Area Dashboard-->
 <div class="row">
   <div class="col-lg-12">
-    <table class="table table-bordered table-hovered">
+    <table class="table table-bordered table-hovered" id="dataTable" cellspacing=0 cellpadding=0>
       <thead class="thead-light">
         <tr>
           <th>NIM</th>
@@ -29,20 +29,19 @@
             <td><?php echo $nama_dosen; ?></td>
             <td><?php echo $status; ?></td>
             <td>
-              <a href="?p=jadwal_tools&ts=kp&nim=<?php echo $nim; ?>&act=detail" class="btn btn-info btn-sm">
+              <a href="?p=jadwal_tools&ts=kp&id=<?php echo $id_jadwal_kp; ?>&act=detail" class="btn btn-info btn-sm">
                 <i class="fa fa-fw fa-arrow-circle-right"></i>Detail</a>
               <?php
                 if (($status == 'Disetujui') OR ($status == 'Ditolak')) {
                   ?>
-                  <a href="?p=jadwal_tools&ts=kp&nim=<?php echo $nim; ?>&act=ubah" class="btn btn-warning btn-sm">
-                    <i class="fa fa-fw fa-edit"></i>Ubah</a>
+
                   <?php
                 }
                 else{
                   ?>
-                  <a href="?p=jadwal_tools&ts=kp&nim=<?php echo $nim; ?>&act=v" class="btn btn-success btn-sm">
+                  <a href="?p=jadwal_tools&ts=kp&id=<?php echo $id_jadwal_kp; ?>&act=v" class="btn btn-success btn-sm">
                     <i class="fa fa-fw fa-check-circle"></i>Setujui</a>
-                  <a href="?p=jadwal_tools&ts=kp&nim=<?php echo $nim; ?>&act=x" class="btn btn-danger btn-sm">
+                  <a href="?p=jadwal_tools&ts=kp&id=<?php echo $id_jadwal_kp; ?>&act=x" class="btn btn-danger btn-sm">
                     <i class="fa fa-fw fa-times-circle"></i>Tolak</a>
                   <?php
                 }

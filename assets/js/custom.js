@@ -1,63 +1,6 @@
-
-function tampilkan_iddosen(a,b){
+function tampilkan_iddosen(a){
   var id_dosen = a;
-  var id_d = "id_dosen";
-  var id = id_d.concat("_",b);
-
-	document.getElementById(id).value = a;
-  var dos1 = document.getElementById('id_dosen_1').value;
-  var dos2 = document.getElementById('id_dosen_2').value;
-  var dos3 = document.getElementById('id_dosen_3').value;
-
-  var pilih1 = "pilih".concat("_1_",dos1);
-  var pilih2 = "pilih".concat("_2_",dos1);
-  var pilih3 = "pilih".concat("_3_",dos1);
-  var pilih4 = "pilih".concat("_1_",dos2);
-  var pilih5 = "pilih".concat("_2_",dos2);
-  var pilih6 = "pilih".concat("_3_",dos2);
-  var pilih7 = "pilih".concat("_1_",dos3);
-  var pilih8 = "pilih".concat("_2_",dos3);
-  var pilih9 = "pilih".concat("_3_",dos3);
-  alert(pilih1,
-  pilih2,
-  pilih3,
-  pilih4,
-  pilih5,
-  pilih6,
-  pilih7,
-  pilih8,
-  pilih9);
-  document.getElementById(pilih1).disabled = false;
-  document.getElementById(pilih2).disabled = false;
-  document.getElementById(pilih3).disabled = false;
-  document.getElementById(pilih4).disabled = false;
-  document.getElementById(pilih5).disabled = false;
-  document.getElementById(pilih6).disabled = false;
-  document.getElementById(pilih7).disabled = false;
-  document.getElementById(pilih8).disabled = false;
-  document.getElementById(pilih9).disabled = false;
-
-    document.getElementById(pilih1).disabled = true;
-    document.getElementById(pilih2).disabled = true;
-    document.getElementById(pilih3).disabled = true;
-    document.getElementById(pilih4).disabled = true;
-    document.getElementById(pilih5).disabled = true;
-    document.getElementById(pilih6).disabled = true;
-    document.getElementById(pilih7).disabled = true;
-    document.getElementById(pilih8).disabled = true;
-    document.getElementById(pilih9).disabled = true;
-
-}
-function valid_dosen(){
-
-
-}
-function limit_checkbox(max,identifier)
-{
-	var checkbox = $("input[name='"+identifier+"[]']");
-	var checked  = $("input[name='"+identifier+"[]']:checked").length;
-	checkbox.filter(':not(:checked)').prop('disabled', checked >= max);
-
+	document.getElementById('id_dosen').value = a;
 }
 function cek(menu){
   ck = document.getElementsByName('id_jadwal_kp[]');
@@ -84,4 +27,90 @@ function cek_tanggal(menu){
     $("[data-toggle='popover']").popover('hide');
     cs.disabled = false;
   }
+}
+
+function pilih(){
+  ck = document.getElementById('option').value;
+  ct = "#daftar".concat("_",ck)
+
+  document.getElementById('pilih_kategori').href = ct;
+}
+function pilih_sidang(a,b){
+  if (a < 8) {
+    alert('Maaf, bimbingan harus mencapai 8x Untuk bisa mendaftar Sidang!')
+  }
+  else {
+    document.getElementById('id_jadwal').value = b;
+
+  }
+}
+
+function pindah_search(){
+    ck = document.getElementById('t_sidang').value;
+    table.search( this.value ).draw();
+    //document.getElementById('dataTable_filter').children('input').add = ck;
+    //document.getElementsByClassName('form-control form-control-sm').c
+}
+
+$.fn.dataTable.ext.search.push(
+    function( settings, data, dataIndex ) {
+        var min = $('#t_sidang').val();
+        var max = $('#w_sidang').val();
+        var date = data[1] || 0; // use data for the age column
+
+
+            return true;
+
+    }
+);
+
+$(document).ready(function() {
+    var table = $('#example').DataTable();
+
+    // Event listener to the two range filtering inputs to redraw on input
+    $('#t_sidang').on( 'change', function () {
+    table.search( this.value ).draw();
+    } );
+
+    $('#w_sidang').on( 'keyup', function () {
+    table.column(2).search(this.value).draw();
+
+    } );
+
+    $('#r_sidang').on( 'change', function () {
+    table.column(3).search(this.value).draw();
+
+    } );
+
+    $('#r_sidang2').on( 'change', function () {
+    table.column(4).search(this.value).draw();
+
+    } );
+
+    $('#r_sidang3').on( 'change', function () {
+    table.column(3).search(this.value).draw();
+
+    } );
+
+} );
+
+function limit_checkbox(max,identifier)
+{
+	var checkbox = $("input[name='"+identifier+"[]']");
+	var checked  = $("input[name='"+identifier+"[]']:checked").length;
+	checkbox.filter(':not(:checked)').prop('disabled', checked >= max);
+
+}
+
+function kalk_n(){
+    var n1 = parseInt(document.getElementById('n_1').value);
+    var n2 = parseInt(document.getElementById('n_2').value);
+    var n3 = parseInt(document.getElementById('n_3').value);
+    var n4 = parseInt(document.getElementById('n_4').value);
+    var n5 = parseInt(document.getElementById('n_5').value);
+    var n6 = parseInt(document.getElementById('n_6').value);
+    var ntotal = n1*0.1 + n2*0.1 + n3*0.2 + n4*0.1 + n5*0.3 + n6*0.2;
+    document.getElementById('n_total').value = ntotal;
+    //document.getElementById('dataTable_filter').children('input').add = ck;
+    //document.getElementsByClassName('form-control form-control-sm').c
 }

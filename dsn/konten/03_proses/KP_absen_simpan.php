@@ -10,7 +10,7 @@
       ?>
         <script>
           alert('Bimbingan telah selesai disimpan!');
-          window.location.href="?p=KP_absen";
+          window.location.href="?p=KP_absen_kehadiran&id=<?php echo $selesai; ?>";
         </script>
       <?php
     }
@@ -18,7 +18,7 @@
       ?>
         <script>
           alert('Data tidak tersimpan!');
-          window.location.href="?p=KP_absen";
+          window.location.href="?p=KP_absen_kehadiran&id=<?php echo $selesai; ?>";
         </script>
       <?php
     }
@@ -31,7 +31,7 @@
       ?>
         <script>
           alert('Data tidak Valid!');
-          window.location.href="?p=KP_absen";
+          window.location.href="?p=KP_absen_kehadiran&id=<?php echo $id_absen_kp; ?>";
         </script>
       <?php
     }
@@ -46,7 +46,7 @@
         ?>
           <script>
             alert('Tidak ada data yang berubah!');
-            window.location.href="?p=KP_absen";
+            window.location.href="?p=KP_absen_kehadiran&id=<?php echo $id_absen_kp; ?>";
           </script>
         <?php
       }
@@ -71,7 +71,7 @@
         ?>
           <script>
             alert('Data tersimpan!');
-            window.location.href="?p=KP_absen";
+            window.location.href="?p=KP_absen_kehadiran&id=<?php echo $id_absen_kp; ?>";
           </script>
         <?php
       }
@@ -79,7 +79,7 @@
         ?>
           <script>
             alert('Data tidak tersimpan!');
-            window.location.href="?p=KP_absen";
+            window.location.href="?p=KP_absen_kehadiran&id=<?php echo $id_absen_kp; ?>";
           </script>
         <?php
       }
@@ -104,7 +104,7 @@
           ?>
             <script>
               alert('Data tersimpan!');
-              window.location.href="?p=KP_absen";
+              window.location.href="?p=KP_absen_kehadiran&id=<?php echo $id_absen_kp; ?>";
             </script>
           <?php
         }
@@ -112,7 +112,7 @@
           ?>
             <script>
               alert('Data tidak tersimpan!');
-              window.location.href="?p=KP_absen";
+              window.location.href="?p=KP_absen_kehadiran&id=<?php echo $id_absen_kp; ?>";
             </script>
           <?php
         }
@@ -122,7 +122,7 @@
         ?>
           <script>
             alert('Tidak ada data yang berubah!');
-            window.location.href="?p=KP_absen";
+            window.location.href="?p=KP_absen_kehadiran&id=<?php echo $id_absen_kp; ?>";
           </script>
         <?php
       }

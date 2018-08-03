@@ -1,11 +1,13 @@
 <?php
 
-$nim = $_POST['nim'];
-$nama_instansi = $_POST['nama_instansi'];
-$alamat_instansi = $_POST['alamat_instansi'];
-$id_dosen = $_POST['id_dosen'];
+
 $tipe = $_POST['tipe'];
 if ($tipe == "KP") {
+  $nim = $_POST['nim'];
+  $nama_instansi = $_POST['nama_instansi'];
+  $alamat_instansi = $_POST['alamat_instansi'];
+  $id_dosen = $_POST['id_dosen'];
+
   $judul_kp = $_POST['judul_kp'];
   $query = "SELECT max(id_jadwal_kp) as maxKode FROM jadwal_kp";
   $hasil = $mysqli->query($query);
@@ -62,6 +64,11 @@ if ($tipe == "KP") {
     }
 }
 elseif ($tipe == "TA") {
+  $nim = $_POST['nim'];
+  $nama_instansi = $_POST['nama_instansi'];
+  $alamat_instansi = $_POST['alamat_instansi'];
+  $id_dosen = $_POST['id_dosen'];
+
   $judul_ta = $_POST['judul_ta'];
   $query = "SELECT max(id_jadwal_ta) as maxKode FROM jadwal_ta";
   $hasil = $mysqli->query($query);
@@ -115,6 +122,109 @@ elseif ($tipe == "TA") {
         </script>
       <?php
     }
+}
+
+elseif ($tipe == "sidang") {
+
+  if (!empty($_POST['id_jadwal']) AND
+      !empty($_POST['tipe_sidang'])
+  ) {
+      $id_jadwal = $_POST['id_jadwal'];
+      $tipe_sidang = $_POST['tipe_sidang'];
+      $ruang_sidang = $_POST['ruang_sidang'];
+      if ($tipe_sidang == "KP") {
+        $tanggal_sidang_kp_start = $_POST['tanggal_sidang']." ".$_POST['waktu_sidang_start'];
+        $tanggal_sidang_kp_end = $_POST['tanggal_sidang']." ".$_POST['waktu_sidang_end'];
+        $query_cek_jadwal = "SELECT * FROM jadwal_kp WHERE tanggal_sidang_kp_start = '$tanggal_sidang_kp_start' AND ruang_sidang_kp = '$ruang_sidang' AND id_jadwal_kp != '$id_jadwal'";
+        $sql_cek = $mysqli->query($query_cek_jadwal);
+        if (mysqli_num_rows($sql_cek)>0) {
+          ?>
+            <script>
+              alert('Maaf, silahkan pilih waktu yang lain!');
+              window.location.href="?p=ta_tools&id=<?php echo $id_jadwal; ?>";
+            </script>
+          <?php
+        }
+        else {
+          $query_update_kp = "UPDATE jadwal_kp SET
+                              status_sidang_kp = 'Didaftarkan',
+                              tanggal_sidang_kp_start = '$tanggal_sidang_kp_start',
+                              ruang_sidang_kp = '$ruang_sidang',
+                              tanggal_sidang_kp_end = '$tanggal_sidang_kp_end'
+                              WHERE id_jadwal_kp = '$id_jadwal'";
+          $sql_update_kp = $mysqli->query($query_update_kp);
+          
+        }
+
+        
+        if ($sql_update_ta) {
+          ?>
+            <script>
+              alert('Sidang telah didaftarkan!');
+              window.location.href="?p=KP_kelola_sidang";
+            </script>
+          <?php
+        }
+        else {
+          ?>
+            <script>
+              alert('Maaf, data yang anda masukkan tidak valid!');
+              window.location.href="?p=TA_kelola_sidang";
+            </script>
+          <?php
+        }
+        //
+      }
+      elseif ($tipe_sidang == "TA") {
+        $tanggal_sidang_ta_start = $_POST['tanggal_sidang']." ".$_POST['waktu_sidang_start'];
+        $tanggal_sidang_ta_end = $_POST['tanggal_sidang']." ".$_POST['waktu_sidang_end'];
+        $query_cek_jadwal = "SELECT * FROM jadwal_ta WHERE tanggal_sidang_ta_start = '$tanggal_sidang_ta_start' AND ruang_sidang_ta = '$ruang_sidang' AND id_jadwal_ta != '$id_jadwal'";
+        $sql_cek = $mysqli->query($query_cek_jadwal);
+        if (mysqli_num_rows($sql_cek)>0) {
+          ?>
+            <script>
+              alert('Maaf, silahkan pilih waktu yang lain!');
+              window.location.href="?p=ta_tools&id=<?php echo $id_jadwal; ?>";
+            </script>
+          <?php
+        }
+        else {
+          $query_update_ta = "UPDATE jadwal_ta SET
+                              status_sidang_ta = 'Didaftarkan',
+                              tanggal_sidang_ta_start = '$tanggal_sidang_ta_start',
+                              ruang_sidang_ta = '$ruang_sidang',
+                              tanggal_sidang_ta_end = '$tanggal_sidang_ta_end'
+                              WHERE id_jadwal_ta = '$id_jadwal'";
+          $sql_update_ta = $mysqli->query($query_update_ta);
+        }
+
+        //$query_cek_ta_dosen = "SELECT"
+        if ($sql_update_ta) {
+          ?>
+            <script>
+              alert('Sidang telah didaftarkan!');
+              window.location.href="?p=TA_kelola_sidang";
+            </script>
+          <?php
+        }
+        else {
+          ?>
+            <script>
+              alert('Maaf, data yang anda masukkan tidak valid!');
+              window.location.href="?p=TA_kelola_sidang";
+            </script>
+          <?php
+        }
+      }
+    }
+  else {
+    ?>
+      <script>
+        alert('Mohon masukkan data dengan benar!');
+        window.location.href="?p=TA_kelola_sidang";
+      </script>
+    <?php
+  }
 }
   else {
     ?>

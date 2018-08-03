@@ -80,23 +80,40 @@
       </li>
 
       <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
-        <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseSidang" data-parent="#exampleAccordion">
+        <a class="nav-link" href="?p=pendaftaran_sidang">
           <i class="fa fa-fw fa-edit"></i>
           <span class="nav-link-text">Daftar Sidang</span>
         </a>
-        <ul class="sidenav-second-level collapse" id="collapseSidang">
+        <!--ul class="sidenav-second-level collapse" id="collapseSidang">
           <li>
-            <a href="navbar.html">
+            <a href="?p=KP_daftar_sidang">
               <i class="fa fa-fw fa-clipboard"></i>
               Sidang KP</a>
           </li>
           <li>
-            <a href="cards.html">
+            <a href="?p=TA_daftar_sidang">
               <i class="fa fa-fw fa-clipboard"></i>
               Sidang TA</a>
           </li>
-        </ul>
+        </ul-->
       </li>
+      <?php if (mysqli_num_rows($sql_hasil_kp)>0) {?>
+      <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
+        <a class="nav-link" href="?p=hasil_sidang_kp">
+          <i class="fa fa-fw fa-edit"></i>
+          <span class="nav-link-text">Hasil Sidang KP</span>
+        </a>
+      </li>
+      <?php } ?>
+
+      <?php if (mysqli_num_rows($sql_hasil_ta)>0) {?>
+      <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
+        <a class="nav-link" href="?p=hasil_sidang_ta">
+          <i class="fa fa-fw fa-edit"></i>
+          <span class="nav-link-text">Hasil Sidang TA</span>
+        </a>
+      </li>
+      <?php } ?>
     </ul>
     <ul class="navbar-nav sidenav-toggler">
       <li class="nav-item">

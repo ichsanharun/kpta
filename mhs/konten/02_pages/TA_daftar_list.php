@@ -28,6 +28,9 @@
           <td><?php echo $status; ?></td>
           <td><?php echo $nama_dosen; ?></td>
           <td><?php echo $hasil_sidang_ta; ?></td>
+          <td>
+            <a href="?p=TA_absen_lihat&id=<?php echo $id_jadwal_ta; ?>" class="btn btn-info">Lihat</a>
+          </td>
         </tr>
         <?php
       }

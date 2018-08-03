@@ -60,54 +60,22 @@
                    <td><input class="form-control" type="text" name="alamat_instansi" value="" required></td>
                </tr>
 
-               <!--tr>
-                   <th>Pembimbing Usulan 1</th>
+               <tr>
+                   <th>Pembimbing Usulan</th>
                    <td width="5%">:</td>
                    <td>
                       <div class="row">
                         <div class="col-lg-6">
-                         <input type="text" class="form-control" name="id_dosen" id="id_dosen_1" onchange="valid_dosen()" required readonly>
+                         <input type="text" class="form-control" name="id_dosen" id="id_dosen" required readonly>
                         </div>
                         <div class="col-lg-6">
-                         <button type="button" id="bd_1" class="btn btn-primary" data-toggle="modal" data-target="#daftarDosen1">
+                         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#daftarDosen">
                            Lihat Daftar
                          </button>
                         </div>
                       </div>
                    </td>
                </tr>
-               <tr>
-                   <th>Pembimbing Usulan 2</th>
-                   <td width="5%">:</td>
-                   <td>
-                      <div class="row">
-                        <div class="col-lg-6">
-                         <input type="text" class="form-control" name="id_dosen2" id="id_dosen_2" onchange="valid_dosen()" required readonly>
-                        </div>
-                        <div class="col-lg-6">
-                         <button type="button" id="bd_2" class="btn btn-primary" data-toggle="modal" data-target="#daftarDosen2">
-                           Lihat Daftar
-                         </button>
-                        </div>
-                      </div>
-                   </td>
-               </tr>
-               <tr>
-                   <th>Pembimbing Usulan 3</th>
-                   <td width="5%">:</td>
-                   <td>
-                      <div class="row">
-                        <div class="col-lg-6">
-                         <input type="text" class="form-control" name="id_dosen3" id="id_dosen_3" onchange="valid_dosen()" required readonly>
-                        </div>
-                        <div class="col-lg-6">
-                         <button type="button" id="bd_3" class="btn btn-primary" data-toggle="modal" data-target="#daftarDosen3">
-                           Lihat Daftar
-                         </button>
-                        </div>
-                      </div>
-                   </td>
-               </tr-->
 
                <?php
              }
@@ -121,8 +89,7 @@
 
 
 <!-- Modal -->
-<?php for ($i=1; $i <= 3 ; $i++) {?>
-<div class="modal fade" id="daftarDosen<?php echo $i; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="daftarDosen" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -135,7 +102,6 @@
         <table class="table table-hovered" id="dataTable">
           <thead class="thead-light">
             <tr>
-              <th></th>
               <th>ID Dosen</th>
               <th>Nama Dosen</th>
               <th>Klik u/ Pilih</th>
@@ -145,10 +111,9 @@
           <?php foreach ($sql_dosen as $key) {
             extract($key); ?>
               <tr>
-                <td><input type="checkbox" name="id_dosen[]" value="<?php echo $id_dosen; ?>" onchange="limit_checkbox(1,'id_dosen')"></td>
                 <td><?php echo $id_dosen; ?></td>
                 <td><?php echo $nama_dosen; ?></td>
-                <td><button href="#" name="pil[]" id="pilih_<?php echo $i; ?>_<?php echo $id_dosen; ?>" onclick="tampilkan_iddose('<?php echo $id_dosen; ?>',<?php echo $i; ?>)" class="btn btn-info btn-sm">Pilih</button></td>
+                <td><a href="#" onclick="tampilkan_iddosen('<?php echo $id_dosen; ?>')" class="btn btn-info btn-sm">Pilih</a></td>
               </tr>
             <?php } ?>
         </table>
@@ -159,4 +124,3 @@
     </div>
   </div>
 </div>
-<?php } ?>

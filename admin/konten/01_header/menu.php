@@ -11,46 +11,42 @@
           <span class="nav-link-text">Home</span>
         </a>
       </li>
-      <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Charts">
-        <a class="nav-link" href="?p=profil">
-          <i class="fa fa-fw fa-user"></i>
-          <span class="nav-link-text">Profil</span>
-        </a>
-      </li>
+
       <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
         <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapsePermohonan" data-parent="#exampleAccordion">
-          <i class="fa fa-fw fa-edit"></i>
+          <i class="fa fa-fw fa-users"></i>
           <span class="nav-link-text">
-            Permohonan
-            <?php
-              if (($alert_skp > 0) OR ($alert_sta > 0)) {
-                ?>
-                <span class="indicator text-warning">
-                  <i class="fa fa-fw fa-circle"></i>
-                </span>
-                <?php
-              }
-            ?>
+            Kelola User
           </span>
         </a>
         <ul class="sidenav-second-level collapse" id="collapsePermohonan">
           <li>
-            <a href="?p=permohonan_SIK">
-              <i class="fa fa-fw fa-file"></i>
-              Surat Izin Kerja
-              <span class="badge badge-pill badge-warning"><?php echo $alert_skp; ?> New</span></a>
+            <a href="?p=user_dosen">
+              <i class="fa fa-fw fa-user"></i>
+              Dosen
             </a>
           </li>
           <li>
-            <a href="?p=permohonan_SIT">
-              <i class="fa fa-fw fa-file"></i>
-              Surat Izin
-              <span class="badge badge-pill badge-warning"><?php echo $alert_sta; ?> New</span></a>
+            <a href="?p=user_mahasiswa">
+              <i class="fa fa-fw fa-user"></i>
+              Mahasiswa
             </a>
           </li>
         </ul>
       </li>
-      <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
+      <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Charts">
+        <a class="nav-link" href="?p=KP_daftar_list">
+          <i class="fa fa-fw fa-building"></i>
+          <span class="nav-link-text">List Kerja Praktek</span>
+        </a>
+      </li>
+      <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Charts">
+        <a class="nav-link" href="?p=TA_daftar_list">
+          <i class="fa fa-fw fa-file"></i>
+          <span class="nav-link-text">List Tugas Akhir</span>
+        </a>
+      </li>
+      <!--li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
         <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseKP" data-parent="#exampleAccordion">
           <i class="fa fa-fw fa-edit"></i>
           <span class="nav-link-text">
@@ -111,24 +107,60 @@
               Absen Bimbingan</a>
           </li>
         </ul>
-      </li>
+      </li-->
 
       <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
         <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseSidang" data-parent="#exampleAccordion">
           <i class="fa fa-fw fa-edit"></i>
-          <span class="nav-link-text">Daftar Sidang</span>
+          <span class="nav-link-text">
+            Kelola Sidang
+            <?php
+              if ($alert_sidang_kp > 0 OR $alert_sidang_ta > 0) {
+                ?>
+                <span class="indicator text-warning">
+                  <i class="fa fa-fw fa-circle"></i>
+                </span>
+                <?php
+              }
+            ?>
+          </span>
         </a>
         <ul class="sidenav-second-level collapse" id="collapseSidang">
           <li>
-            <a href="navbar.html">
+            <a href="?p=KP_kelola_sidang">
               <i class="fa fa-fw fa-clipboard"></i>
-              Sidang KP</a>
+              Pendaftaran KP
+              <span class="badge badge-pill badge-warning"><?php echo $alert_sidang_kp; ?> New</span></a>
+            </a>
           </li>
           <li>
-            <a href="cards.html">
+            <a href="?p=TA_kelola_sidang">
               <i class="fa fa-fw fa-clipboard"></i>
-              Sidang TA</a>
+              Pendaftaran TA
+              <span class="badge badge-pill badge-warning"><?php echo $alert_sidang_ta; ?> New</span></a>
+            </a>
           </li>
+          <li>
+            <a href="?p=KP_sidang">
+              <i class="fa fa-fw fa-clipboard"></i>
+              Sidang KP
+            </a>
+            </a>
+          </li>
+          <li>
+            <a href="?p=TA_sidang">
+              <i class="fa fa-fw fa-clipboard"></i>
+              Sidang TA
+            </a>
+            </a>
+          </li>
+          <!--li>
+            <a href="?p=dosen_menguji">
+              <i class="fa fa-fw fa-clipboard"></i>
+              Dosen Menguji
+              <span class="badge badge-pill badge-warning"><?php echo $alert_sta; ?> New</span></a>
+            </a>
+          </li-->
         </ul>
       </li>
     </ul>
@@ -254,8 +286,13 @@
         </div>
       </li-->
 
-
       <li class="nav-item">
+        <a class="nav-link" href="?p=profil">
+          <i class="fa fa-fw fa-user"></i>
+          <span class="nav-link-text">Profil</span>
+        </a>
+      </li>
+      <!--li class="nav-item">
         <form class="form-inline my-2 my-lg-0 mr-lg-2">
           <div class="input-group">
             <input class="form-control" type="text" placeholder="Search for...">
@@ -266,11 +303,12 @@
             </span>
           </div>
         </form>
-      </li>
+      </li-->
       <li class="nav-item">
         <a class="nav-link" data-toggle="modal" data-target="#exampleModal">
           <i class="fa fa-fw fa-sign-out"></i>Logout</a>
       </li>
+
     </ul>
   </div>
 </nav>

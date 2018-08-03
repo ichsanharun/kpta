@@ -3,18 +3,20 @@
   <li class="breadcrumb-item">
     <a href="?p=">Dashboard</a>
   </li>
-  <li class="breadcrumb-item active">List Tugas Akhir</li>
+  <li class="breadcrumb-item active">List Kerja Praktek</li>
 </ol>
 <!-- Area Dashboard-->
 <div class="row">
   <div class="col-lg-12">
-    <table class="table table-bordered table-hovered">
+    <table class="table table-bordered table-hovered" id="dataTable" cellspacing=0 cellpadding=0>
       <thead class="thead-light">
         <tr>
+          <th>NIM</th>
+          <th>Nama</th>
           <th>Judul Penelitian</th>
-          <th>Status</th>
           <th>Pembimbing</th>
-          <th>Nilai</th>
+          <th>Status</th>
+          <th>Opsi</th>
         </tr>
       </thead>
       </tbody>
@@ -23,16 +25,35 @@
         extract($key);
         ?>
           <tr>
+            <td><?php echo $nim; ?></td>
+            <td><?php echo $nama_mahasiswa; ?></td>
             <td><?php echo $judul_ta; ?></td>
-            <td><?php echo $status; ?></td>
             <td><?php echo $nama_dosen; ?></td>
-            <td><?php echo $hasil_sidang_ta; ?></td>
+            <td><?php echo $status; ?></td>
+            <td>
+              <a href="?p=jadwal_tools&ts=ta&id=<?php echo $id_jadwal_ta; ?>&act=detail" class="btn btn-info btn-sm">
+                <i class="fa fa-fw fa-arrow-circle-right"></i>Detail</a>
+              <?php
+                if (($status == 'Disetujui') OR ($status == 'Ditolak')) {
+                  ?>
+
+                  <?php
+                }
+                else{
+                  ?>
+                  <a href="?p=jadwal_tools&ts=ta&id=<?php echo $id_jadwal_ta; ?>&act=v" class="btn btn-success btn-sm">
+                    <i class="fa fa-fw fa-check-circle"></i>Setujui</a>
+                  <a href="?p=jadwal_tools&ts=ta&id=<?php echo $id_jadwal_ta; ?>&act=x" class="btn btn-danger btn-sm">
+                    <i class="fa fa-fw fa-times-circle"></i>Tolak</a>
+                  <?php
+                }
+              ?>
+            </td>
           </tr>
 
         <?php
         }
         ?>
     </table>
-    <a href="?p=TA_daftar_baru" class="btn btn-info">Daftar Baru</a>
   </div>
 </div>

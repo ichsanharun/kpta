@@ -61,7 +61,7 @@
       ?>
         <script>
           alert('Bimbingan telah selesai disimpan!');
-          window.location.href="?p=TA_absen";
+          window.location.href="?p=TA_absen_lihat&id=<?php echo $id; ?>";
         </script>
       <?php
     }
@@ -69,7 +69,7 @@
       ?>
         <script>
           alert('Data tidak tersimpan!');
-          window.location.href="?p=TA_absen";
+          window.location.href="?p=TA_absen_lihat&id=<?php echo $id; ?>";
         </script>
       <?php
     }
@@ -78,7 +78,7 @@
       ?>
         <script>
           alert('Data tidak Valid!');
-          window.location.href="?p=TA_absen";
+          window.location.href="?p=TA_absen_lihat&id=<?php echo $id; ?>";
         </script>
       <?php
     }

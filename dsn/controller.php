@@ -18,6 +18,27 @@ $sql_jadwal_kp = mysqli_query($mysqli,$query_jadwal_kp);
 $query_jadwal_ta = "SELECT * FROM jadwal_ta INNER JOIN mahasiswa INNER JOIN jurusan INNER JOIN dosen ON `mahasiswa`.`nim` = `jadwal_ta`.`nim` AND `mahasiswa`.`kode_jurusan` = `jurusan`.`kode_jurusan` AND `jadwal_ta`.`id_dosen` = `dosen`.`id_dosen` WHERE `jadwal_ta`.`status` != 'Berakhir'  ";
 $sql_jadwal_ta = mysqli_query($mysqli,$query_jadwal_ta);
 
+/* PROFIL SIDANG*/
+$query_kp_sidang = "SELECT * FROM jadwal_kp INNER JOIN mahasiswa INNER JOIN jurusan INNER JOIN dosen INNER JOIN ruang ON `mahasiswa`.`nim` = `jadwal_kp`.`nim` AND `mahasiswa`.`kode_jurusan` = `jurusan`.`kode_jurusan` AND `jadwal_kp`.`id_dosen` = `dosen`.`id_dosen` AND `jadwal_kp`.`ruang_sidang_kp` = `ruang`.`id_ruang` WHERE `jadwal_kp`.`status_sidang_kp` = 'Didaftarkan'  ";
+$sql_kp_sidang = mysqli_query($mysqli,$query_kp_sidang);
+
+$query_ta_sidang = "SELECT * FROM jadwal_ta INNER JOIN mahasiswa INNER JOIN jurusan INNER JOIN dosen INNER JOIN ruang ON `mahasiswa`.`nim` = `jadwal_ta`.`nim` AND `mahasiswa`.`kode_jurusan` = `jurusan`.`kode_jurusan` AND `jadwal_ta`.`id_dosen` = `dosen`.`id_dosen` AND `jadwal_ta`.`ruang_sidang_ta` = `ruang`.`id_ruang` WHERE `jadwal_ta`.`status_sidang_ta` = 'Didaftarkan' ";
+$sql_ta_sidang = mysqli_query($mysqli,$query_ta_sidang);
+
+$query_kp_sidang_list = "SELECT DISTINCT `sidang_kp_detail`.`id_sidang_kp` as ID, `sidang_kp`.`tanggal_sidang_kp_start`, `sidang_kp`.`tanggal_sidang_kp_end`, `ruang`.`nama_ruang` FROM `sidang_kp_detail` LEFT JOIN `sidang_kp` ON `sidang_kp_detail`.`id_sidang_kp` = `sidang_kp`.`id_sidang_kp` INNER JOIN `jadwal_kp` INNER JOIN `ruang` ON `sidang_kp`.`id_jadwal_kp` = `jadwal_kp`.`id_jadwal_kp` AND `sidang_kp`.`id_ruang` = `ruang`.`id_ruang` WHERE `sidang_kp_detail`.`id_dosen_penguji` = '$_SESSION[id]' AND `sidang_kp_detail`.`catatan_penguji` IS NULL";
+$sql_kp_sidang_list = mysqli_query($mysqli,$query_kp_sidang_list);
+
+$query_ta_sidang_list = "SELECT DISTINCT `sidang_ta_detail`.`id_sidang_ta` as ID, `sidang_ta`.`tanggal_sidang_ta_start`, `sidang_ta`.`tanggal_sidang_ta_end`, `ruang`.`nama_ruang` FROM `sidang_ta_detail` LEFT JOIN `sidang_ta` ON `sidang_ta_detail`.`id_sidang_ta` = `sidang_ta`.`id_sidang_ta` INNER JOIN `jadwal_ta` INNER JOIN `ruang` ON `sidang_ta`.`id_jadwal_ta` = `jadwal_ta`.`id_jadwal_ta` AND `sidang_ta`.`id_ruang` = `ruang`.`id_ruang` WHERE `sidang_ta_detail`.`id_dosen_penguji` = '$_SESSION[id]' AND `sidang_ta_detail`.`catatan_penguji` IS NULL";
+$sql_ta_sidang_list = mysqli_query($mysqli,$query_ta_sidang_list);
+
+
+/* -----------*/
+
+/* RUANG*/
+$query_ruang = "SELECT * FROM ruang";
+$sql_ruang = mysqli_query($mysqli,$query_ruang);
+/* -----------*/
+
 if (!empty($_GET['id'])) {
   $query_absen_kp_list = "SELECT * FROM jadwal_kp INNER JOIN mahasiswa ON `jadwal_kp`.`nim` = `mahasiswa`.`nim` WHERE status = 'Disetujui' AND id_dosen = '$_SESSION[id]'";
   $sql_absen_kp_list = mysqli_query($mysqli,$query_absen_kp_list);
@@ -32,8 +53,19 @@ if (!empty($_GET['id'])) {
   $sql_absen_ta_head = mysqli_query($mysqli,$query_absen_ta_head);
   $query_absen_ta_kehadiran = "SELECT *,absen_ta_detail.status as ab_status FROM absen_ta INNER JOIN absen_ta_detail INNER JOIN jadwal_ta INNER JOIN mahasiswa ON `absen_ta`.`id_absen_ta` = `absen_ta_detail`.`id_absen_ta` AND `absen_ta_detail`.`id_jadwal_ta` = `jadwal_ta`.`id_jadwal_ta` AND `jadwal_ta`.`nim` = `mahasiswa`.`nim` WHERE `absen_ta_detail`.`id_absen_ta` = '$_GET[id]' AND `absen_ta`.`id_dosen` = '$_SESSION[id]'";
   $sql_absen_ta_kehadiran = mysqli_query($mysqli,$query_absen_ta_kehadiran);
+
+  $query_sidang_kp = "SELECT * FROM sidang_kp_detail WHERE id_dosen_penguji = '$_SESSION[id]' AND id_sidang_kp = '$_GET[id]'";
+  $sql_skp = $mysqli->query($query_sidang_kp);
+  $query_sidang_ta = "SELECT * FROM sidang_ta_detail WHERE id_dosen_penguji = '$_SESSION[id]' AND id_sidang_ta = '$_GET[id]'";
+  $sql_sta = $mysqli->query($query_sidang_ta);
 }
 
+$query_alert_nguji_kp = "SELECT DISTINCT id_sidang_kp FROM sidang_kp_detail WHERE id_dosen_penguji = '$_SESSION[id]' AND `sidang_kp_detail`.`catatan_penguji` IS NULL";
+$sql_alert_nguji_kp = mysqli_query($mysqli,$query_alert_nguji_kp);
+$query_alert_nguji_ta = "SELECT DISTINCT id_sidang_ta FROM sidang_ta_detail WHERE id_dosen_penguji = '$_SESSION[id]' AND `sidang_ta_detail`.`catatan_penguji` IS NULL";
+$sql_alert_nguji_ta = mysqli_query($mysqli,$query_alert_nguji_ta);
+$alert_nguji_kp = mysqli_num_rows($sql_alert_nguji_kp);
+$alert_nguji_ta = mysqli_num_rows($sql_alert_nguji_ta);
 
 if (!empty($_GET['id_kpta'])) {
   $query_profil_jadwal_kp = "SELECT * FROM jadwal_kp INNER JOIN mahasiswa INNER JOIN jurusan ON `jadwal_kp`.`nim` = `mahasiswa`.`nim` AND `mahasiswa`.`kode_jurusan` = `jurusan`.`kode_jurusan` WHERE `jadwal_kp`.`id_jadwal_kp` = '$_GET[id_kpta]'";
